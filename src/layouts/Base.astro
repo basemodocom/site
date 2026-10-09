@@ -1,0 +1,33 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { siteName } from "../site";
+import "../styles/global.css";
+
+interface Props {
+  /** Omit on the home page: its title is the site name alone. */
+  title?: string;
+  description?: string;
+}
+
+const { title, description = "A site deployed with Basemodo." } = Astro.props;
+const pageTitle = title ? `${title} · ${siteName}` : siteName;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="flex min-h-dvh flex-col bg-surface font-sans text-ink antialiased">
+    <Header siteName={siteName} />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
+      <slot />
+    </main>
+    <Footer siteName={siteName} />
+  </body>
+</html>
