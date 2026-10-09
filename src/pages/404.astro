@@ -1,0 +1,14 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<!-- Basemodo answers any missing page with this one (dist/404.html). -->
+<Base title="Page not found" description="This page does not exist.">
+  <article class="space-y-6">
+    <h1 class="text-3xl font-semibold tracking-tight">Page not found</h1>
+    <p class="text-lg text-muted">There is nothing at this address.</p>
+    <p>
+      <a href="/" class="text-accent underline underline-offset-4">Go to the home page</a>
+    </p>
+  </article>
+</Base>
