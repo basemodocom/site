@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+
+const features = [
+  {
+    title: "Fast",
+    body: "Every page is built ahead of time to plain HTML, so it loads at once.",
+  },
+  {
+    title: "Simple",
+    body: "Pages are files. Add one to src/pages and it has an address.",
+  },
+  {
+    title: "Yours",
+    body: "Change the words, the colors and the layout. Nothing here is fixed.",
+  },
+];
+---
+
+<Base title="My Site">
+  <section class="space-y-6">
+    <p class="text-sm font-medium text-accent">Welcome</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+      A clear headline that says what this site is about.
+    </h1>
+    <p class="max-w-xl text-lg text-muted">
+      One or two sentences that tell visitors what they will find here and why it matters to
+      them.
+    </p>
+    <div class="flex gap-3 pt-2">
+      <a
+        href="/about"
+        class="rounded-md bg-ink px-4 py-2 text-sm font-medium text-surface transition-opacity hover:opacity-85"
+      >
+        Learn more
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-20 grid gap-4 sm:grid-cols-3">
+    {
+      features.map((feature) => (
+        <article class="rounded-lg border border-line bg-raised p-5">
+          <h2 class="font-medium">{feature.title}</h2>
+          <p class="mt-2 text-sm text-muted">{feature.body}</p>
+        </article>
+      ))
+    }
+  </section>
+</Base>
