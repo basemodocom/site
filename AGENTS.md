@@ -7,6 +7,7 @@ This site runs on [Basemodo](https://basemodo.com) as static files: Astro and Ta
 - `src/site.ts` holds the site name, the one place to change it.
 - `src/layouts/Base.astro` is the page shell (head, header, footer) every page uses. Pass it `title` and `description`; the home page passes no `title` and shows the site name alone.
 - `src/components/Header.astro` holds the navigation `links`.
+- `src/pages/404.astro` is the page Basemodo shows for any address the site does not have.
 - `src/styles/global.css` configures Tailwind and holds the theme colors.
 
 ## Add a page
