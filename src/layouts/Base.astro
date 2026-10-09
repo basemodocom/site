@@ -1,16 +1,17 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { siteName } from "../site";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
+  /** Omit on the home page: its title is the site name alone. */
+  title?: string;
   description?: string;
 }
 
 const { title, description = "A site deployed with Basemodo." } = Astro.props;
-const siteName = "My Site";
-const pageTitle = title === siteName ? title : `${title} · ${siteName}`;
+const pageTitle = title ? `${title} · ${siteName}` : siteName;
 ---
 
 <!doctype html>

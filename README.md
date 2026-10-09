@@ -1,6 +1,6 @@
 # site
 
-A static website template for [Basemodo](https://basemodo.com): Astro and Tailwind, built to plain files.
+A static website Template for [Basemodo](https://basemodo.com): Astro and Tailwind, built to plain files.
 
 ```sh
 bun create basemodocom/site my-site

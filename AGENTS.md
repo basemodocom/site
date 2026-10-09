@@ -1,18 +1,17 @@
-# AGENTS.md
+# Site on Basemodo
 
-This is a Basemodo **site** Template: Astro and Tailwind CSS v4, built to static files, managed with Bun. Use it for sites where nothing is saved and nothing depends on the visitor: a landing page, docs, a catalog, a portfolio.
+This site runs on [Basemodo](https://basemodo.com) as static files: Astro and Tailwind CSS v4, built with Bun into `dist/`, which Basemodo serves with no server behind it. It fits sites where nothing is saved and nothing depends on the visitor: a landing page, docs, a catalog, a portfolio. The pages hold placeholder copy; replace it with what the Person asked for.
 
 ## Layout
 
-- `src/pages/`: one file per page. `src/pages/about.astro` is `/about`.
-- `src/layouts/Base.astro`: the shared page shell (head, header, footer). Every page uses it.
-- `src/components/`: reusable pieces (`Header.astro`, `Footer.astro`).
-- `src/styles/global.css`: Tailwind and the theme colors.
-- `public/`: files served as they are (`public/favicon.svg` is `/favicon.svg`).
+- `src/site.ts` holds the site name, the one place to change it.
+- `src/layouts/Base.astro` is the page shell (head, header, footer) every page uses. Pass it `title` and `description`; the home page passes no `title` and shows the site name alone.
+- `src/components/Header.astro` holds the navigation `links`.
+- `src/styles/global.css` configures Tailwind and holds the theme colors.
 
 ## Add a page
 
-1. Create `src/pages/<name>.astro`:
+1. Create `src/pages/<name>.astro` inside `Base`:
 
    ```astro
    ---
@@ -24,23 +23,21 @@ This is a Basemodo **site** Template: Astro and Tailwind CSS v4, built to static
    </Base>
    ```
 
-2. Add it to `links` in `src/components/Header.astro` if it belongs in the navigation.
+2. Add it to `links` in `Header.astro` when it belongs in the navigation.
 
 ## Style
 
-- Style with Tailwind classes in the markup. Do not add a `tailwind.config.js`; Tailwind v4 is configured in CSS.
-- Use the theme colors from `src/styles/global.css` (`bg-surface`, `bg-raised`, `text-ink`, `text-muted`, `border-line`, `text-accent`). They switch to dark when the visitor's system prefers it. Change a color there, not page by page.
+- Style with Tailwind classes in the markup, and configure Tailwind in `src/styles/global.css` (v4 is configured in CSS).
+- Use the theme colors (`bg-surface`, `bg-raised`, `text-ink`, `text-muted`, `border-line`, `text-accent`); they switch to dark when the visitor's system prefers it. Change a color in `global.css`, and every page follows.
 
 ## Write
 
 - Write the copy in the Person's language, and set `<html lang>` in `Base.astro` to match.
-- Replace the placeholder copy, the site name in `Base.astro`, and the email on the About page.
+- Replace the placeholder copy, the site name in `src/site.ts` and the email on the About page.
 
 ## Check and deploy
 
-- Run `bun run check` (Astro's type check, Biome's lint and format check) before deploying, and fix what it reports. `bun run format` fixes formatting.
-- Deploy with `basemodo deploy`, or the Basemodo MCP's deploy tool. Basemodo runs `bun run build` and serves the files in `dist/`; no server runs.
-- Keep `scripts` as they are (`dev`, `build`, `preview`, `check`, `format`). Do not add a server adapter.
+Run `bun run check` and fix what it reports. Then deploy with `basemodo deploy` (or the Basemodo MCP's `deploy` tool) and give the Person the URL it prints. Basemodo runs `bun run build` and serves what it writes to `dist/`.
 
 ## Who can see it
 
@@ -49,4 +46,4 @@ This is a Basemodo **site** Template: Astro and Tailwind CSS v4, built to static
 
 ## When a site is not enough
 
-If the site must save data, have forms that persist, or know who the visitor is, move to the app Template (`bun create basemodocom/app`). Do not add Astro SSR, an adapter (such as `@astrojs/node`) or API routes here.
+Keep the site static. When it must save data, keep what a form sends, or know who the visitor is, move to the app Template (`bun create basemodocom/app`).
