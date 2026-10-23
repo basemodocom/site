@@ -38,7 +38,7 @@ This site runs on [Basemodo](https://basemodo.com) as static files: Astro and Ta
 
 ## Check and deploy
 
-Run `bun run check` and fix what it reports. Then deploy the folder with `basemodo deploy` (or the local MCP's `deploy`), or, through the Remote MCP, push it to a repository and deploy that with `repository`; give the Person the App's URL. A repository is optional: recommend one (GitHub by default) for the code's history. Basemodo runs `bun run build` and serves what it writes to `dist/`.
+Run `bun run check` and fix what it reports. Then deploy the folder with `basemodo deploy` (or the local MCP's `deploy`), or, through the Remote MCP, push it to a repository and deploy that with `repository`; give the Person the App's URL. A repository is optional: recommend one (GitHub by default) for the code's history. Basemodo runs `bun run build` and serves what it writes to `dist/`; the build runs `astro check` first, so a type error stops the Deploy.
 
 ## Who can see it
 
